@@ -4,7 +4,6 @@ import {
   ArrayNotEmpty,
   IsArray,
   IsNotEmpty,
-  IsNumber,
   IsString,
   MaxLength,
   MinLength,
@@ -57,9 +56,8 @@ export class CreatePostDto {
   description: string;
 
   @ApiProperty()
-  @IsNumber()
   @IsNotEmpty({ message: 'Giá cho thuê không được để trống' })
-  price: number;
+  price: string;
 
   @ApiProperty()
   @IsString()
@@ -67,12 +65,17 @@ export class CreatePostDto {
   priceUnit: PriceUnit;
 
   @ApiProperty()
-  @IsNumber()
   @IsNotEmpty({ message: 'Diện tích không được để trống' })
-  area: number;
+  area: string;
 
   @ApiProperty()
   @IsArray()
   @ArrayNotEmpty({ message: 'Đặc điểm nổi bật không được để trống' })
   highlights: string[];
+
+  @ApiProperty()
+  videoType: string;
+
+  @ApiProperty()
+  videoUrl: string;
 }

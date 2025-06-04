@@ -18,7 +18,9 @@ export class AuthController {
   }
 
   @Post('/verify-otp')
-  async verifyOtp(@Body() verifyOtpDto: VerifyOtpDto): Promise<User> {
+  async verifyOtp(
+    @Body() verifyOtpDto: VerifyOtpDto,
+  ): Promise<{ message: string }> {
     return await this.authService.verifyOtp(verifyOtpDto);
   }
 

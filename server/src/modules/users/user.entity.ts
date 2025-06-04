@@ -1,9 +1,12 @@
+import { Payment } from 'src/modules/payments/payment.entity';
 import { Post } from 'src/modules/posts/post.entity';
+import { Wallet } from 'src/modules/wallets/wallet.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
   OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -51,6 +54,12 @@ export class User {
 
   @OneToMany(() => Post, (post) => post.user)
   posts: Post[];
+
+  @OneToOne(() => Wallet, (wallet) => wallet.user)
+  wallet: Wallet;
+
+  @OneToMany(() => Payment, (payment) => payment.user)
+  payments: Payment[];
 
   @CreateDateColumn()
   createdAt: Date;

@@ -3,9 +3,10 @@ import { HighlightsService } from './highlights.service';
 import { HighlightsController } from './highlights.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Highlight } from 'src/modules/highlights/highlight.entity';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Highlight])],
+  imports: [TypeOrmModule.forFeature([Highlight]), JwtModule],
   providers: [HighlightsService],
   controllers: [HighlightsController],
 })

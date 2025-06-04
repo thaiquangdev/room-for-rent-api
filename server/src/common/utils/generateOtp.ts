@@ -1,4 +1,4 @@
-import otpGenerate from 'otp-generator';
+import * as otpGenerate from 'otp-generator';
 
 export const generateOtp = () => {
   const otp = otpGenerate.generate(6, {
@@ -6,6 +6,6 @@ export const generateOtp = () => {
     specialChars: false,
     digits: true,
   });
-  const otpExpire = Date.now() + 5 * 60 * 1000;
+  const otpExpire = new Date(Date.now() + 5 * 60 * 1000);
   return { otp, otpExpire };
 };

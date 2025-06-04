@@ -69,7 +69,7 @@ export class AuthService {
     return await this.userRepository.save(newUser);
   }
 
-  async verifyOtp(verifyOtpDto: VerifyOtpDto): Promise<User> {
+  async verifyOtp(verifyOtpDto: VerifyOtpDto): Promise<{ message: string }> {
     const emailExist = await this.userRepository.findOne({
       where: { email: verifyOtpDto.email },
     });
@@ -98,10 +98,13 @@ export class AuthService {
 
     emailExist.emailVerify = true;
 
-    return await this.userRepository.save(emailExist);
+    await this.userRepository.save(emailExist);
+    return {
+      message: 'Xác thực email thành công',
+    };
   }
 
-  async sendOtp(email: string) {
+  async sendOtp(email: string): Promise<{ message: string }> {
     const emailExist = await this.userRepository.findOne({
       where: {
         email,

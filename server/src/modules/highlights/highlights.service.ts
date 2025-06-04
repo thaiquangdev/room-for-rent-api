@@ -72,9 +72,23 @@ export class HighlightsService {
     return await this.highlightRepository.save(highlightExist);
   }
 
-  async getHighlights(query: { queryPage?: string; queryLimit?: string }) {
-    const page = Number(query.queryPage);
-    const limit = Number(query.queryLimit);
+  async getHighlights(query: { page?: string; limit?: string }) {
+    const page = Number(query.page) || 1;
+    const limit = Number(query.limit);
+
+    if (!limit || limit <= 0) {
+      const data = await this.highlightRepository.find();
+      const total = data.length;
+
+      return {
+        data,
+        total,
+        page: null,
+        limit: null,
+        totalPages: 1,
+      };
+    }
+
     const skip = (page - 1) * limit;
 
     const [data, total] = await this.highlightRepository.findAndCount({

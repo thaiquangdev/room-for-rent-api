@@ -1,5 +1,6 @@
 import { PriceUnit } from 'src/common/enums/price-unit.enum';
 import { Highlight } from 'src/modules/highlights/highlight.entity';
+import { Payment } from 'src/modules/payments/payment.entity';
 import { PostImage } from 'src/modules/posts/post-image.entity';
 import { User } from 'src/modules/users/user.entity';
 import {
@@ -43,7 +44,7 @@ export class Post {
   @Column({ nullable: false })
   hourseNumber: string;
 
-  @Column({ nullable: false })
+  @Column({ nullable: false, type: 'text' })
   description: string;
 
   @Column({ nullable: false })
@@ -80,6 +81,9 @@ export class Post {
 
   @OneToMany(() => PostImage, (postImage) => postImage.post)
   images: PostImage[];
+
+  @OneToMany(() => Payment, (payment) => payment.post)
+  payments: Payment[];
 
   @CreateDateColumn()
   createdAt: Date;

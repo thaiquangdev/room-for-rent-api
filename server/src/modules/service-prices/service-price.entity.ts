@@ -1,4 +1,5 @@
 import { Payment } from 'src/modules/payments/payment.entity';
+import { Post } from 'src/modules/posts/post.entity';
 import {
   Column,
   CreateDateColumn,
@@ -45,6 +46,9 @@ export class ServicePrice {
 
   @OneToMany(() => Payment, (payment) => payment.servicePrice)
   payments: Payment[];
+
+  @OneToMany(() => Post, (post) => post.servicePrice)
+  posts: Post[];
 
   @CreateDateColumn()
   createdAt: Date;

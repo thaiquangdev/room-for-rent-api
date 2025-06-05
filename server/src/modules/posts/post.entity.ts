@@ -2,6 +2,7 @@ import { PriceUnit } from 'src/common/enums/price-unit.enum';
 import { Highlight } from 'src/modules/highlights/highlight.entity';
 import { Payment } from 'src/modules/payments/payment.entity';
 import { PostImage } from 'src/modules/posts/post-image.entity';
+import { ServicePrice } from 'src/modules/service-prices/service-price.entity';
 import { User } from 'src/modules/users/user.entity';
 import {
   Column,
@@ -84,6 +85,9 @@ export class Post {
 
   @OneToMany(() => Payment, (payment) => payment.post)
   payments: Payment[];
+
+  @ManyToOne(() => ServicePrice, (servicePrice) => servicePrice.postSize)
+  servicePrice: ServicePrice;
 
   @CreateDateColumn()
   createdAt: Date;

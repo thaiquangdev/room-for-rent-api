@@ -18,7 +18,6 @@ export class Payment {
   @Column({
     name: 'payment_status',
     enum: ['Đang chờ', 'Thành công', 'Thất bại'],
-    default: 'Đang chờ',
   })
   paymentStatus: string;
 
@@ -43,6 +42,12 @@ export class Payment {
     enum: ['vnpay', 'momo', 'zalopay'],
   })
   paymentMethod: string;
+
+  @Column({
+    name: 'payment_type',
+    enum: ['Nạp tiền', 'Thanh toán'],
+  })
+  paymentType: string;
 
   @Column({ name: 'before_amount', type: 'decimal', nullable: true })
   beforeAmount: number;

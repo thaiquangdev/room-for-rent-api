@@ -1,7 +1,9 @@
 import {
   Body,
   Controller,
+  Get,
   Post,
+  Query,
   Req,
   UploadedFiles,
   UseGuards,
@@ -15,6 +17,9 @@ import { storageConfig } from 'src/common/configs/multer.config';
 import { RequestUser } from 'src/common/types/request-user';
 import { AuthGuard } from 'src/modules/auth/auth.guard';
 import { CreatePostDto } from 'src/modules/posts/dto/create-post.dto';
+import { PaymentPostDto } from 'src/modules/posts/dto/payment-post.dto';
+import { PostOwnerQueryDto } from 'src/modules/posts/dto/post-owner-query.dto';
+import { PostQueryDto } from 'src/modules/posts/dto/post-query.dto';
 import { PostsService } from 'src/modules/posts/posts.service';
 
 @ApiTags('posts')
@@ -80,5 +85,27 @@ export class PostsController {
       imagePaths,
       video ?? '',
     );
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('/payment-post')
+  async paymentPost(
+    @Body() paymentPostDto: PaymentPostDto,
+    @Req() req: Request,
+  ) {
+    const { id } = req['user'] as RequestUser;
+
+    return await this.postService.paymentPost(paymentPostDto, id);
+  }
+
+  @Get('/')
+  async getAllPostForUsers(@Query() postQueryDto: PostQueryDto) {
+    return await this.postService.getAllPostForUser(postQueryDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Get('/get-posts-owner')
+  async getAllPostForOwner(@Query() postOwnerQueryDto: PostOwnerQueryDto) {
+    return await this.postService.getAllPostForOwner(postOwnerQueryDto);
   }
 }

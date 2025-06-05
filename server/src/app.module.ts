@@ -8,6 +8,8 @@ import { UsersModule } from 'src/modules/users/users.module';
 import { HighlightsModule } from './modules/highlights/highlights.module';
 import { PostsModule } from 'src/modules/posts/posts.module';
 import { ServicePricesModule } from './modules/service-prices/service-prices.module';
+import { WalletsModule } from 'src/modules/wallets/wallets.module';
+import { PaymentsModule } from 'src/modules/payments/payments.module';
 
 @Module({
   imports: [
@@ -22,6 +24,8 @@ import { ServicePricesModule } from './modules/service-prices/service-prices.mod
     HighlightsModule,
     PostsModule,
     ServicePricesModule,
+    WalletsModule,
+    PaymentsModule,
   ],
   controllers: [],
   providers: [],

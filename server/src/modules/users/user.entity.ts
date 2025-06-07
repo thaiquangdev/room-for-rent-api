@@ -1,5 +1,6 @@
 import { Payment } from 'src/modules/payments/payment.entity';
 import { Post } from 'src/modules/posts/post.entity';
+import { SavePost } from 'src/modules/save-posts/save-post.entity';
 import { Wallet } from 'src/modules/wallets/wallet.entity';
 import {
   Column,
@@ -60,6 +61,9 @@ export class User {
 
   @OneToMany(() => Payment, (payment) => payment.user)
   payments: Payment[];
+
+  @OneToMany(() => SavePost, (savePost) => savePost.user)
+  savePosts: SavePost[];
 
   @CreateDateColumn()
   createdAt: Date;

@@ -15,6 +15,7 @@ import {
   FindManyOptions,
   FindOptionsWhere,
   In,
+  Like,
   Repository,
 } from 'typeorm';
 import * as fs from 'fs';

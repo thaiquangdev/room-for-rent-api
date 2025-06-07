@@ -52,7 +52,7 @@ export class ServicePricesService {
     const limit = Number(query.limit) || 10;
     const skip = (page - 1) * limit;
 
-    const [data, total] = await this.servicePriceRepository.find({
+    const [data, total] = await this.servicePriceRepository.findAndCount({
       skip,
       take: limit,
     });
@@ -71,9 +71,7 @@ export class ServicePricesService {
     id: string,
   ) {
     const servicePriceExist = await this.servicePriceRepository.findOne({
-      where: {
-        name: updateServicePriceDto.name,
-      },
+      where: { id },
     });
 
     if (!servicePriceExist) {
@@ -95,6 +93,7 @@ export class ServicePricesService {
 
     return {
       message: 'Cập nhật gói thành công',
+      data: updated,
     };
   }
 }

@@ -2,6 +2,8 @@ import { PriceUnit } from 'src/common/enums/price-unit.enum';
 import { Highlight } from 'src/modules/highlights/highlight.entity';
 import { Payment } from 'src/modules/payments/payment.entity';
 import { PostImage } from 'src/modules/posts/post-image.entity';
+import { Report } from 'src/modules/reports/report.entity';
+import { SavePost } from 'src/modules/save-posts/save-post.entity';
 import { ServicePrice } from 'src/modules/service-prices/service-price.entity';
 import { User } from 'src/modules/users/user.entity';
 import {
@@ -69,6 +71,12 @@ export class Post {
   @Column({ default: false })
   isApprove: boolean;
 
+  @Column({
+    name: 'is_active',
+    default: true,
+  })
+  isActive: boolean;
+
   @ManyToMany(() => Highlight, (highlight) => highlight.posts)
   @JoinTable({
     name: 'post_highlights',
@@ -88,6 +96,12 @@ export class Post {
 
   @ManyToOne(() => ServicePrice, (servicePrice) => servicePrice.postSize)
   servicePrice: ServicePrice;
+
+  @OneToMany(() => Report, (report) => report.post)
+  reports: Report[];
+
+  @OneToMany(() => SavePost, (savePost) => savePost.post)
+  savePosts: SavePost[];
 
   @CreateDateColumn()
   createdAt: Date;

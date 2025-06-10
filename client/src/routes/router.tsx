@@ -8,6 +8,7 @@ import { HomePage } from "@/pages/public/HomePage";
 import { InfoPersonPage } from "@/pages/public/InfoPersonPage";
 import { LoginPage } from "@/pages/public/LoginPage";
 import { NewPost } from "@/pages/public/NewPost";
+import { PostDetailPage } from "@/pages/public/PostDetailPage";
 import { RegisterPage } from "@/pages/public/RegisterPage";
 import { pathName } from "@/utils/pathName";
 import { createBrowserRouter } from "react-router-dom";
@@ -20,6 +21,10 @@ export const router = createBrowserRouter([
       {
         path: pathName.public.home,
         element: <HomePage />,
+      },
+      {
+        path: pathName.public.postDetail,
+        element: <PostDetailPage />,
       },
       {
         path: pathName.public.owner,

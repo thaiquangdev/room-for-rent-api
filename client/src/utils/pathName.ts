@@ -10,5 +10,6 @@ export const pathName = {
     depositInfo: "nap-tien/:phuong-thuc",
     infoPerson: "cap-nhat-thong-tin-ca-nhan",
     changePassword: "cap-nhat-thong-tin-ca-nhan/doi-mat-khau",
+    postDetail: "/:post-slug",
   },
 };

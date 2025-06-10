@@ -102,3 +102,79 @@ export const sidebarDatas = [
     icon: IoLogOutOutline,
   },
 ];
+
+export const priceQueryDatas = [
+  {
+    id: "price-1",
+    name: "Dưới 1 triệu",
+    path: "gia_tu=1000000",
+  },
+  {
+    id: "price-2",
+    name: "Từ 1 - 2 triệu",
+    path: "gia_tu=1000000&gia_den=2000000",
+  },
+  {
+    id: "price-3",
+    name: "Từ 2 - 3 triệu",
+    path: "gia_tu=2000000&gia_den=3000000",
+  },
+  {
+    id: "price-4",
+    name: "Từ 3 - 5 triệu",
+    path: "gia_tu=3000000&gia_den=5000000",
+  },
+  {
+    id: "price-5",
+    name: "Từ 5 - 7 triệu",
+    path: "gia_tu=5000000&gia_den=7000000",
+  },
+  {
+    id: "price-6",
+    name: "Từ 7 - 10 triệu",
+    path: "gia_tu=7000000&gia_den=10000000",
+  },
+  {
+    id: "price-7",
+    name: "Từ 10 - 15 triệu",
+    path: "gia_tu=10000000&gia_den=15000000",
+  },
+  {
+    id: "price-8",
+    name: "Trên 15 triệu",
+    path: "gia_tu=15000000",
+  },
+];
+
+export const areaQueryDatas = [
+  {
+    id: "area-1",
+    name: "Dưới 20m",
+    path: "dien_tich_den=20",
+  },
+  {
+    id: "area-2",
+    name: "Từ 20m - 30m",
+    path: "dien_tich_tu=20&dien_tich_den=30",
+  },
+  {
+    id: "area-3",
+    name: "Từ 30m - 50m",
+    path: "dien_tich_tu=30&dien_tich_den=50",
+  },
+  {
+    id: "area-4",
+    name: "Từ 50m - 70m",
+    path: "dien_tich_tu=50&dien_tich_den=70",
+  },
+  {
+    id: "area-5",
+    name: "Từ 70m - 90m",
+    path: "dien_tich_tu=70&dien_tich_den=90",
+  },
+  {
+    id: "area-6",
+    name: "Trên 90m",
+    path: "ien_tich_tu=90",
+  },
+];
